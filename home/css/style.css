@@ -1,29 +1,44 @@
 
 /* ---------------------------
-   THEME VARIABLES
+   THEME VARIABLES — Option A (Royal Purple)
 ----------------------------*/
 :root{
-  --bg-deep: #2b0c0e;         /* deep maroon */
-  --bg-dark: #3a0f12;         /* stage panels */
-  --bg-gradient-1: #5c0f13;   /* hero gradient start */
-  --bg-gradient-2: #8b1e24;   /* hero gradient end */
-  --accent: #ffddd2;          /* soft cream text */
-  --accent-strong: #fff5f2;   /* brighter cream */
-  --rose: #a22a32;            /* buttons, highlights */
-  --rose-dark: #7a1f26;       /* hover */
-  --muted: #c9b6b3;           /* body text */
+  /* Background & surfaces */
+  --bg-deep: #1e1333;         /* deep royal purple */
+  --bg-dark: #2a1847;         /* panel/background */
+  --bg-gradient-1: #4b2e83;   /* hero gradient start */
+  --bg-gradient-2: #7a4cd6;   /* hero gradient end */
+
+  /* Text & accents */
+  --accent: #e9defa;          /* soft lilac text */
+  --accent-strong: #fff7fe;   /* brighter heading */
+
+  /* Primary action color (buttons, highlights) */
+  --rose: #8b5cf6;            /* primary purple */
+  --rose-dark: #6d28d9;       /* hover/darker */
+
+  /* Muted text */
+  --muted: #c8b9e6;           /* body copy on dark bg */
+
+  /* Cards & borders */
   --card: rgba(255,255,255,0.06);
-  --card-border: rgba(255,255,255,0.12);
+  --card-border: rgba(255,255,255,0.14);
+
+  /* Shadows & radii */
   --shadow-soft: 0 20px 40px rgba(0,0,0,0.35);
   --shadow-hard: 0 40px 80px rgba(0,0,0,0.45);
+
+  /* Corners & layout */
   --radius-lg: 24px;
   --radius-md: 16px;
   --radius-sm: 12px;
   --maxw: 1200px;
 }
 
-/* Global reset & base */
-*{box-sizing:border-box}
+/* ---------------------------
+   GLOBAL RESET & BASE
+----------------------------*/
+*{ box-sizing:border-box; }
 html,body{
   height:100%;
   background: var(--bg-deep);
@@ -34,20 +49,44 @@ body{
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height:1.5;
 }
-img{max-width:100%; display:block;}
-a{color:inherit; text-decoration:none}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
 
-/* Decorative petals */
+/* ---------------------------
+   DECORATIVE PETALS
+----------------------------*/
 .petal{
-  position:absolute; pointer-events:none; opacity:0.18; filter:saturate(110%) contrast(110%);
+  position:absolute;
+  pointer-events:none;
+  opacity:0.18;
+  filter:saturate(110%) contrast(110%);
+  /* Performance hint for JS parallax transforms */
+  will-change: transform;
 }
-.petal img{width:220px; height:auto}
-.petal.p1{top:-40px; left:-40px; transform:rotate(-12deg)}
-.petal.p2{top:30%; right:-60px; transform:rotate(24deg)}
-.petal.p3{bottom:-60px; left:10%; transform:rotate(-8deg)}
+.petal img{ width:220px; height:auto; }
 
-/* Container */
-.wrap{max-width: var(--maxw); margin:0 auto; padding: 24px}
+/* Initial positions + rotations (JS parallax will preserve angles) */
+.petal.p1{ top:-40px; left:-40px; transform:rotate(-12deg); }
+.petal.p2{ top:30%; right:-60px; transform:rotate(24deg); }
+.petal.p3{ bottom:-60px; left:10%; transform:rotate(-8deg); }
+
+/* Optional micro interaction */
+.petal img{ transition: filter .25s ease, transform .25s ease; }
+.petal:hover img{ filter:saturate(120%) contrast(115%); transform:scale(1.03); }
+
+/* Respect reduced motion (JS also disables parallax) */
+@media (prefers-reduced-motion: reduce){
+  .petal{ animation:none; }
+}
+
+/* ---------------------------
+   CONTAINER
+----------------------------*/
+.wrap{
+  max-width: var(--maxw);
+  margin:0 auto;
+  padding: 24px;
+}
 
 /* ---------------------------
    HERO SECTION
@@ -67,7 +106,8 @@ a{color:inherit; text-decoration:none}
 }
 
 .hero-type .kicker{
-  font-weight:800; letter-spacing:.08em; text-transform:uppercase; color: var(--accent);
+  font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+  color: var(--accent);
   opacity:0.85; margin-bottom:6px; font-size: 12px;
 }
 .big-title{
@@ -78,6 +118,7 @@ a{color:inherit; text-decoration:none}
   letter-spacing:-.01em;
   margin: 0 0 8px 0;
 }
+
 .stack{
   display:flex; flex-direction:column; gap:8px; margin-top:10px;
   font-weight:900; font-size: clamp(14px, 2vw, 18px);
@@ -88,16 +129,17 @@ a{color:inherit; text-decoration:none}
   border: 1px solid var(--card-border);
   backdrop-filter: blur(6px);
 }
+
 .hero-cta{
   margin-top: 18px; display:flex; gap:12px; flex-wrap:wrap;
 }
 .btn{
   padding:12px 16px; border-radius: 10px; font-weight:700;
   background: var(--rose); color: #fff; border:1px solid rgba(255,255,255,.15);
-  box-shadow: 0 8px 20px rgba(162, 42, 50, .35);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, .35); /* tuned to purple */
   transition: all .2s ease;
 }
-.btn:hover{background: var(--rose-dark); transform: translateY(-1px)}
+.btn:hover{ background: var(--rose-dark); transform: translateY(-1px); }
 
 .hero-media{
   position:relative;
@@ -121,7 +163,33 @@ a{color:inherit; text-decoration:none}
 }
 
 /* ---------------------------
-   CARD GRID SECTIONS
+   NAVBAR (sticky)
+----------------------------*/
+.navbar{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  gap: 16px;
+  padding: 12px 16px;
+  margin: 16px 0;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+.navbar a{
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--accent);
+}
+.navbar a:hover{ background: rgba(255,255,255,0.1); }
+
+/* ---------------------------
+   SECTIONS & CARD GRID
 ----------------------------*/
 .section{ margin-top: 28px; }
 .section-title{
@@ -130,10 +198,12 @@ a{color:inherit; text-decoration:none}
   letter-spacing:-.01em; margin-bottom: 12px;
   color: var(--accent-strong);
 }
+
 .grid{
   display:grid; gap: 16px;
   grid-template-columns: repeat(12, 1fr);
 }
+
 .card{
   grid-column: span 4;
   background: var(--card);
@@ -143,36 +213,49 @@ a{color:inherit; text-decoration:none}
   box-shadow: var(--shadow-soft);
   overflow:hidden;
 }
-.card-body{ padding: 16px; }
+.card.wide{ grid-column: span 8; }
+
 .card-header{
   padding: 16px;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
   border-bottom: 1px solid var(--card-border);
   font-weight:800; letter-spacing:.03em;
 }
+.card-body{ padding: 16px; }
 .card p{ color: var(--muted); margin: 0 0 10px 0; }
 
-.card.wide{ grid-column: span 8; }
 .shot{
   width:100%; aspect-ratio: 16/9; border-radius: 10px; overflow:hidden;
   border:1px solid var(--card-border); margin-top: 10px;
 }
-.shot img{ width:100%; height:100%; object-fit:cover }
-
-/* List bullets */
-.bullet{
-  display:flex; align-items:flex-start; gap:10px; margin-bottom:10px;
-}
-.bullet .dot{
-  width:14px; height:14px; border-radius:50%;
-  background: linear-gradient(180deg, var(--rose), var(--rose-dark));
-  box-shadow: 0 4px 10px rgba(162,42,50,.4);
-  margin-top: 4px;
-  flex-shrink:0;
-}
+.shot img{ width:100%; height:100%; object-fit:cover; }
 
 /* ---------------------------
-   COOPERATION / CTA SECTION
+   LISTS & EXPERIENCE ICONS
+----------------------------*/
+.list{ list-style: disc; padding-left: 24px; }
+.list li{ margin-top: 10px; }
+
+.experience-icons{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 12px;
+  align-items:center;
+}
+.experience-icons img{
+  width: 100%;
+  height: 80px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 8px;
+  transition: transform .2s ease;
+}
+.experience-icons img:hover{ transform: scale(1.08); }
+
+/* ---------------------------
+   CTA / CONTACT SECTION
 ----------------------------*/
 .cta{
   position:relative;
@@ -199,7 +282,9 @@ a{color:inherit; text-decoration:none}
   color: var(--accent);
   max-width: 600px;
 }
-.qr-line{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
+.qr-line{
+  display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;
+}
 .qr{
   width: 136px; height: 136px;
   border-radius: 12px; overflow:hidden;
@@ -207,12 +292,17 @@ a{color:inherit; text-decoration:none}
   background: #fff;
   display:grid; place-items:center;
 }
-.qr img{ width:100%; height:100%; object-fit:cover }
+.qr img{ width:100%; height:100%; object-fit:cover; }
 
-.cta-right{ display:flex; align-items:center; justify-content:center; }
+/* ---------------------------
+   ROUND PORTRAIT FRAME
+----------------------------*/
+.cta-right{
+  display:flex; align-items:center; justify-content:center;
+}
 .round-frame{
   width: min(380px, 80%);
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: 1px solid var(--card-border);
   overflow:hidden;
@@ -224,15 +314,28 @@ a{color:inherit; text-decoration:none}
   filter: saturate(110%) contrast(105%);
 }
 
-/* Footer */
+/* ---------------------------
+   FOOTER
+----------------------------*/
 .footer{
-  opacity:0.75; font-size: 12px; padding: 20px 8px; text-align:center; color: var(--muted);
+  opacity:0.75;
+  font-size: 12px;
+  padding: 20px 8px;
+  text-align:center;
+  color: var(--muted);
 }
 
-/* Hover micro-interactions */
-.card:hover{ transform: translateY(-2px); transition: transform .2s ease; }
+/* ---------------------------
+   HOVER MICRO-INTERACTIONS
+----------------------------*/
+.card:hover{
+  transform: translateY(-2px);
+  transition: transform .2s ease;
+}
 
-/* Responsive */
+/* ---------------------------
+   RESPONSIVE
+----------------------------*/
 @media (max-width: 980px){
   .hero-inner{ grid-template-columns: 1fr; }
   .cta{ grid-template-columns: 1fr; }
