@@ -2,7 +2,7 @@
 :root {
 --slide-count: 4; / number of slides /
 --duration: 6s; / total cycle duration */
-}
+{
 
 { box-sizing: border-box; }
 .slideshow {
