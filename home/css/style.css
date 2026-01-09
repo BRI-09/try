@@ -1,10 +1,33 @@
-
 .navbar {
     display: grid;
     grid-auto-flow: column;
     justify-content: center;
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    flex-wrap: wrap; /* helps on small screens */
 }
-:root{
+
+.navbar a,
+.navbar button {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.navbar a:hover,
+.navbar button:hover {
+    background-color: #7a559f;
+}
+
+}:root{
   /* Background & surfaces */
   --bg-deep: #1e1333;         /* deep royal purple */
   --bg-dark: #2a1847;         /* panel/background */
