@@ -2,21 +2,24 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <title>Introduction</title>
   <meta charset="UTF-8" />
+  <title>Introduction</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet
+  <!-- Styles -->
+  <!-- If your stylesheet is named styles.css (recommended), keep this path -->
+  css/styles.css
 
-
+  <!-- Google Fonts (titles: Playfair Display, body: Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Play:wght@700;900&family=Inter:wght@400;600;800;900&display=swap
 </head>
 <body>
 
-  <!-- Decorative petals (positioned via CSS) -->
-  <div class="petal p1">svg/petal-1.svg</div>
-  <div class="petal p2">svg/petal-2.svg</div>
-  <div class="petal p3">svg/petal-3.svg</div>
+  
+<div class="petal p1" aria-hidden="true">svg/petal-1.png</div>
+<div class="petal p2" aria-hidden="true">svg/petal-2.png</div>
+<div class="petal p3" aria-hidden="true">svg/petal-3.png</div>
+
 
   <div class="wrap">
 
@@ -52,7 +55,7 @@
       <h2 class="section-title">Кто я?</h2>
       <div class="grid">
         <article class="card">
-          <div class="card-header">Опыт & Подход</div>
+          <div class="card-header">Опыт &amp; Подход</div>
           <div class="card-body">
             <div class="bullet"><span class="dot"></span><div>5+ лет в UX/UI и веб‑дизайне</div></div>
             <div class="bullet"><span class="dot"></span><div>Фокус на бизнес‑целях и метриках</div></div>
@@ -66,7 +69,7 @@
           <div class="card-body">
             <div class="bullet"><span class="dot"></span><div>Figma, Adobe XD, Illustrator</div></div>
             <div class="bullet"><span class="dot"></span><div>Framer, Webflow, CSS/HTML</div></div>
-            <div class="bullet"><span class="dot"></span><div>Prototyping & User Testing</div></div>
+            <div class="bullet"><span class="dot"></span><div>Prototyping &amp; User Testing</div></div>
             <div class="bullet"><span class="dot"></span><div>Design Tokens, Components</div></div>
           </div>
         </article>
@@ -104,14 +107,20 @@
           <div class="card-header">Главная страница</div>
           <div class="card-body">
             <p>Фокус на конверсии, семантика, адаптивность.</p>
-            <div class="shot"><img src="assets/redesign-home
+            <div class="shot">
+              assets/redesign-home.jpg
+            </div>
           </div>
         </article>
         <article class="card wide">
           <div class="card-header">Каталог / Продукт</div>
           <div class="card-body">
             <p>Карточки, фильтры, отзывы, чек‑аут.</p>
-            <div class="shot"><img src="assets/redesign-catalog.jpg" alt="Каталог — ск   </article>
+            <div class="shot">
+              assets/redesign-catalog.jpg
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -128,7 +137,7 @@
         <article class="card">
           <div class="card-header">Брендинг</div>
           <div class="card-body">
-            <div class="shot">assets/branding.jpg</div>
+            <div class="shot"><img src="nding.jpg</div>
           </div>
         </article>
         <article class="card">
@@ -151,19 +160,23 @@
         <div class="qr-line">
           <div class="qr"><img src="assets/p.png</div>
           <div class="qr">assets/qr-telegram.png</div>
-          <div class="qr"><img src="assetspng</div>
-          <div class="qr"><img src="assets/qr-website.png" alt="Website QR </div>
+          <div class="qr"><img src="assets/qr</div>
+          <div class="qr">assets/qr-website.png</div>
+        </div>
+      </div>
       <div class="cta-right">
         <div class="round-frame">
-          <img src="assets/portrait.jpg" alt="     </div>
+          assets/portrait.jpg
+        </div>
+      </div>
     </section>
 
     <footer class="footer">
       © 2026 — Дизайнер • Контакты: hello@yourdomain.com
     </footer>
-
   </div>
 
-<script src="js/main.js"></script>
+  <!-- Scripts -->
+  js/main.js</script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 
 /* ---------------------------
-   THEME VARIABLES — Option A (Royal Purple)
+   THEME VARIABLES — Royal Purple
 ----------------------------*/
 :root{
   /* Background & surfaces */
@@ -53,7 +53,7 @@ img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
 
 /* ---------------------------
-   DECORATIVE PETALS
+   DECORATIVE PETALS (SVG or PNG)
 ----------------------------*/
 .petal{
   position:absolute;
@@ -63,7 +63,13 @@ a{ color:inherit; text-decoration:none; }
   /* Performance hint for JS parallax transforms */
   will-change: transform;
 }
-.petal img{ width:220px; height:auto; }
+
+/* If you use <img> inside .petal (SVG/PNG), size here */
+.petal img{
+  width: 240px;   /* tweak per instance if needed */
+  height: auto;
+  transition: filter .25s ease, transform .25s ease;
+}
 
 /* Initial positions + rotations (JS parallax will preserve angles) */
 .petal.p1{ top:-40px; left:-40px; transform:rotate(-12deg); }
@@ -71,7 +77,6 @@ a{ color:inherit; text-decoration:none; }
 .petal.p3{ bottom:-60px; left:10%; transform:rotate(-8deg); }
 
 /* Optional micro interaction */
-.petal img{ transition: filter .25s ease, transform .25s ease; }
 .petal:hover img{ filter:saturate(120%) contrast(115%); transform:scale(1.03); }
 
 /* Respect reduced motion (JS also disables parallax) */
@@ -163,32 +168,6 @@ a{ color:inherit; text-decoration:none; }
 }
 
 /* ---------------------------
-   NAVBAR (sticky)
-----------------------------*/
-.navbar{
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  gap: 16px;
-  padding: 12px 16px;
-  margin: 16px 0;
-  border-radius: 12px;
-  backdrop-filter: blur(8px);
-  background: rgba(255,255,255,0.06);
-  border: 1px solid var(--card-border);
-  box-shadow: 0 10px 24px rgba(0,0,0,.25);
-}
-.navbar a{
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-weight: 700;
-  letter-spacing: .02em;
-  color: var(--accent);
-}
-.navbar a:hover{ background: rgba(255,255,255,0.1); }
-
-/* ---------------------------
    SECTIONS & CARD GRID
 ----------------------------*/
 .section{ margin-top: 28px; }
@@ -230,29 +209,17 @@ a{ color:inherit; text-decoration:none; }
 }
 .shot img{ width:100%; height:100%; object-fit:cover; }
 
-/* ---------------------------
-   LISTS & EXPERIENCE ICONS
-----------------------------*/
-.list{ list-style: disc; padding-left: 24px; }
-.list li{ margin-top: 10px; }
-
-.experience-icons{
-  display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 12px;
-  align-items:center;
+/* Bulleted list blocks (used in About cards) */
+.bullet{
+  display:flex; align-items:flex-start; gap:10px; margin-bottom:10px;
 }
-.experience-icons img{
-  width: 100%;
-  height: 80px;
-  object-fit: contain;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 8px;
-  transition: transform .2s ease;
+.bullet .dot{
+  width:14px; height:14px; border-radius:50%;
+  background: linear-gradient(180deg, var(--rose), var(--rose-dark));
+  box-shadow: 0 4px 10px rgba(139,92,246,.35);
+  margin-top: 4px;
+  flex-shrink:0;
 }
-.experience-icons img:hover{ transform: scale(1.08); }
 
 /* ---------------------------
    CTA / CONTACT SECTION
