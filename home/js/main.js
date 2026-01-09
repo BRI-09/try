@@ -84,4 +84,108 @@ document.addEventListener('DOMContentLoaded', () => {
   //     p.style.transform += ` translate(${nx * sway}px, ${ny * sway}px)`;
   //   });
   // });
+
+  // ----------------------------------------------------------------
+  // --- Works Slider (Other Works) ---
+  // ----------------------------------------------------------------
+  (function(){
+    const slider = document.getElementById('works-slider');
+    if (!slider) return; // exit if slider HTML isn't present
+
+    const viewport = slider.querySelector('.works-slider__viewport');
+    const track = slider.querySelector('.works-slider__track');
+    const slides = Array.from(slider.querySelectorAll('.works-slide'));
+    const btnPrev = slider.querySelector('.slider-btn.prev');
+    const btnNext = slider.querySelector('.slider-btn.next');
+    const dotsWrap = slider.querySelector('.works-slider__dots');
+
+    let index = 0;
+    const last = slides.length - 1;
+
+    // Create dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', `Перейти к слайду ${i+1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsWrap.querySelectorAll('button'));
+
+    function update(){
+      track.style.transition = 'transform .35s ease';
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, i) => d.setAttribute('aria-selected', i === index ? 'true' : 'false'));
+      // Optional disabled states:
+      btnPrev.disabled = (index === 0);
+      btnNext.disabled = (index === last);
+    }
+
+    function goTo(i){
+      index = Math.max(0, Math.min(last, i));
+      update();
+    }
+    function next(){ goTo(index + 1); }
+    function prev(){ goTo(index - 1); }
+
+    // Init
+    update();
+
+    // Clicks
+    btnPrev.addEventListener('click', prev);
+    btnNext.addEventListener('click', next);
+
+    // Keyboard (left/right)
+    slider.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+    });
+
+    // Make viewport focusable for keyboard navigation
+    viewport.setAttribute('tabindex', '0');
+
+    // Swipe / drag (pointer + touch)
+    let startX = 0, dx = 0, dragging = false;
+
+    const onDown = (e) => {
+      dragging = true;
+      startX = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
+      track.style.transition = 'none';
+    };
+    const onMove = (e) => {
+      if (!dragging) return;
+      const x = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
+      dx = x - startX;
+      const width = viewport.clientWidth;
+      const percent = (dx / width) * 100;
+      track.style.transform = `translateX(calc(-${index * 100}% + ${percent}%))`;
+    };
+    const onUp = () => {
+      if (!dragging) return;
+      dragging = false;
+      track.style.transition = 'transform .35s ease';
+      const width = viewport.clientWidth;
+      if (Math.abs(dx) > width * 0.2) {
+        if (dx < 0) next(); else prev();
+      } else {
+        update();
+      }
+      dx = 0;
+    };
+
+    viewport.addEventListener('pointerdown', onDown);
+    viewport.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+    viewport.addEventListener('touchstart', onDown, { passive: true });
+    viewport.addEventListener('touchmove', onMove, { passive: true });
+    window.addEventListener('touchend', onUp);
+
+    // --- Optional: Auto-play with pause on hover ---
+    // let auto = setInterval(next, 4000);
+    // slider.addEventListener('mouseenter', () => { clearInterval(auto); });
+    // slider.addEventListener('mouseleave', () => { auto = setInterval(next, 4000); });
+  })();
+
 });

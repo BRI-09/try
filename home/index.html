@@ -31,11 +31,6 @@
           <div class="kicker">Profile</div>
           <h1 class="big-title">Breneth<br/>Ananayo</h1>
 
-          <div class="stack">
-            <span class="pill">Personal</span>
-            <span class="pill">Webpage</span>
-          </div>
-
           <div class="hero-cta">
             #educational</a>
           </div>
@@ -56,7 +51,7 @@
         <article class="card">
           <div class="card-header">Me &amp; My Goals</div>
           <div class="card-body">
-            <div class="bullet"><span class="dot"></span><div>Curious Computer Science student at Asia Pacific College who loves turning ideas into interactive experiences, coding, and caffeinated problem-solving, with a soft spot for cats, cooking, and anime.</div></div>
+            <div class="bullet"><span class="dot"></span><div>Curious Computer Science student at Asia Pacific College who loves turning ideas into interactive experiences, coding, and caffeinated problem-solving, with a soft spot for cats.</div></div>
             <div class="bullet"><span class="dot"></span><div>My Goal is to have a Fat CAt of my own. Also to land a role that supports me and my feline needs. Lastly pursuing a passion project—building apps or websites to help stray cats and dogs find loving homes.</div></div>
           </div>
         </article>
@@ -94,7 +89,7 @@
         <article class="card"><div class="card-header">5. Java</div><div class="card-body"><p>I can do the basics</p></div></article>
         <article class="card"><div class="card-header">6. Linux</div><div class="card-body"><p>I can do some Linux Commands</p></div></article>
       </div>
-
+<ul></ul>
     <div id="app2">
         <div class="experience-icons">
             <img v-for="x in manyExperience" :key="x" :src="x" alt="Skill Icon">
@@ -105,49 +100,82 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="js/images.js"></script>
 
-    <!-- WEBSITE REDESIGN SHOWCASE -->
-    <section class="section" id="redesign">
-      <h2 class="section-title">Редизайн сайта</h2>
-      <div class="grid">
-        <article class="card wide">
-<div class="slideshow" aria-label="Image slideshow"> <div class="slides" role="region" aria-roledescription="slide-show" aria-label="Slide show"> <section class="slide" style="background-image:url('images/my-photo1.jpg');" tabindex="0" aria-label="Slide 1"></section> <section class="slide" style="background-image:url('images/my-photo2.jpg');" tabindex="0" aria-label="Slide 2"></section> <section class="slide" style="background-image:url('images/my-photo3.jpg');" tabindex="0" aria-label="Slide 3"></section> <section class="slide" style="background-image:url('images/my-photo4.jpg');" tabindex="0" aria-label="Slide 4"></section> </div> <div class="dots" aria-label="Slide indicators"> <span class="dot active" aria-label="Slide 1"></span> <span class="dot" aria-label="Slide 2"></span> <span class="dot" aria-label="Slide 3"></span> <span class="dot" aria-label="Slide 4"></span> </div> </div>
-        </article>
-        <article class="card wide">
-          <div class="card-header">Каталог / Продукт</div>
-          <div class="card-body">
-            <p>Карточки, фильтры, отзывы, чек‑аут.</p>
-            <div class="shot">
-              assets/redesign-catalog.jpg
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
 
     <!-- OTHER WORKS -->
-    <section class="section" id="works">
-      <h2 class="section-title">Другие работы</h2>
-      <div class="grid">
-        <article class="card">
-          <div class="card-header">Мобильный UI</div>
-          <div class="card-body">
-            <div class="shot">assets/mobile-ui.jpg</div>
+
+<section class="section" id="works">
+  <h2 class="section-title">Другие работы</h2>
+  <div class="grid">
+
+    <!-- 🔥 New: Glassmorphic Slideshow Card (Wide) -->
+    <article class="card wide" role="region" aria-label="Слайд-шоу работ">
+      <div class="card-header">Слайд‑шоу работ</div>
+      <div class="card-body">
+        <div class="works-slider" id="works-slider">
+          <!-- Slider viewport -->
+          <div class="works-slider__viewport" aria-live="polite">
+            <div class="works-slider__track">
+              <!-- Slides: use your existing images -->
+              <figure class="works-slide">
+                <img src="assets/redesign-home.jpg       <figcaption>Редизайн — Главная</figcaption>
+              </figure>
+              <figure class="works-slide">
+                assets/redesign-catalog.jpg
+                <figcaption>Редизайн — Каталог</figcaption>
+              </figure>
+              <figure class="works-slide">
+                assets/mobile-ui.jpg
+                <figcaption>Мобильный UI</figcaption>
+              </figure>
+              <figure class="works-slide">
+                assets/branding.jpg
+                <figcaption>Брендинг</figcaption>
+              </figure>
+              <figure class="works-slide">
+                assets/design-system.jpg
+                <figcaption>Дизайн‑система</figcaption>
+              </figure>
+            </div>
           </div>
-        </article>
-        <article class="card">
-          <div class="card-header">Брендинг</div>
-          <div class="card-body">
-            <div class="shot"><img src="nding.jpg</div>
+
+          <!-- Controls -->
+          <div class="works-slider__controls">
+            <button class="slider-btn prev" type="button" aria-label="Предыдущий слайд" aria-controls="works-slider">&#10094;</button>
+            <button class="slider-btn next" type="button" aria-label="Следующий слайд" aria-controls="works-slider">&#10095;</button>
           </div>
-        </article>
-        <article class="card">
-          <div class="card-header">Дизайн‑система</div>
-          <div class="card-body">
-            <div class="shot">assets/design-system.jpg</div>
+
+          <!-- Pagination dots (optional, clickable) -->
+          <div class="works-slider__dots" role="tablist" aria-label="Навигация по слайдам">
+            <!-- JS will populate dots -->
           </div>
-        </article>
+        </div>
       </div>
-    </section>
+    </article>
+
+    <!-- Keep or reorder your other cards -->
+    <article class="card">
+      <div class="card-header">Мобильный UI</div>
+      <div class="card-body">
+        <div class="shot">assets/mobile-ui.jpg</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-header">Брендинг</div>
+      <div class="card-body">
+        <div class="shot">assets/branding.jpg</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-header">Дизайн‑система</div>
+      <div class="card-body">
+        <div class="shot"><img src="assetsstem.jpg</div>
+      </div>
+    </article>
+  </div>
+</section>
+
 
     <!-- COOPERATION -->
     <section class="cta" id="cooperation" aria-label="Сотрудничество">
