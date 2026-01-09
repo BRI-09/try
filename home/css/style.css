@@ -1,7 +1,9 @@
 
-/* ---------------------------
-   THEME VARIABLES — Royal Purple
-----------------------------*/
+.navbar {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+}
 :root{
   /* Background & surfaces */
   --bg-deep: #1e1333;         /* deep royal purple */
