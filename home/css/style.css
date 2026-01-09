@@ -346,9 +346,8 @@ a{ color:inherit; text-decoration:none; }
   object-fit: cover;     /* fills the viewport */
   border: 0;
 }
-
-.works-slider{ padding: 8px; }      /* outer breathing room */
-.works-slider__viewport{ border: none; }
+.works-slider{ padding: 0; }              /* keep your border/shadow */
+.works-slider__viewport{ border: none; }  /* inner line off */
 .works-slider__track{ gap: 0; }
+.works-slide{ margin: 0; }
 .works-slide img{ display:block; width:100%; height:100%; object-fit:cover; }
-``
