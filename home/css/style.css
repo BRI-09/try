@@ -55,17 +55,7 @@ a{ color:inherit; text-decoration:none; }
   height: auto;
   transition: filter .25s ease, transform .25s ease;
 }
-.petal {
-    position: absolute;
-    width: 50px;  /* Adjust size as needed */
-    height: 50px;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
 
-.p1 { background-image: url('svg/petal-1.png'); }
-.p2 { background-image: url('svg/orchid2.jpg'); }
-.p3 { background-image: url('svg/orchid3.jpg'); }
 
 /* --- CONTAINER --- */
 .wrap{ max-width: var(--maxw); margin:0 auto; padding: 24px; }
