@@ -55,16 +55,17 @@ a{ color:inherit; text-decoration:none; }
   height: auto;
   transition: filter .25s ease, transform .25s ease;
 }
-/* Initial positions + rotations (JS parallax will preserve angles) */
-.petal.p1{ top:-40px; left:-40px; transform:rotate(-12deg); }
-.petal.p2{ top:30%; right:-60px; transform:rotate(24deg); }
-.petal.p3{ bottom:-60px; left:10%; transform:rotate(-8deg); }
-/* Optional micro interaction */
-.petal:hover img{ filter:saturate(120%) contrast(115%); transform:scale(1.03); }
-/* Respect reduced motion (JS also disables parallax) */
-@media (prefers-reduced-motion: reduce){
-  .petal{ animation:none; }
+.petal {
+    position: absolute;
+    width: 50px;  /* Adjust size as needed */
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
+
+.p1 { background-image: url('svg/petal-1.png'); }
+.p2 { background-image: url('svg/orchid2.jpg'); }
+.p3 { background-image: url('svg/orchid3.jpg'); }
 
 /* --- CONTAINER --- */
 .wrap{ max-width: var(--maxw); margin:0 auto; padding: 24px; }
