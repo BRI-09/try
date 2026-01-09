@@ -1,49 +1,47 @@
+
+/* --- NAVBAR (fixed structure) --- */
 .navbar {
-    display: grid;
-    grid-auto-flow: column;
-    justify-content: center;
-/* Navigation */
-.navbar {
-    display: flex;
-    justify-content: center;
-    background-color: #333;
-    flex-wrap: wrap; /* helps on small screens */
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+  flex-wrap: wrap; /* helps on small screens */
 }
 
 .navbar a,
 .navbar button {
-    color: white;
-    padding: 14px 20px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font: inherit;
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font: inherit;
 }
 
 .navbar a:hover,
 .navbar button:hover {
-    background-color: #7a559f;
+  background-color: #7a559f;
 }
 
-}:root{
+/* --- THEME VARIABLES --- */
+:root{
   /* Background & surfaces */
-  --bg-deep: #1e1333;         /* deep royal purple */
-  --bg-dark: #2a1847;         /* panel/background */
-  --bg-gradient-1: #4b2e83;   /* hero gradient start */
-  --bg-gradient-2: #7a4cd6;   /* hero gradient end */
+  --bg-deep: #1e1333;      /* deep royal purple */
+  --bg-dark: #2a1847;      /* panel/background */
+  --bg-gradient-1: #4b2e83;/* hero gradient start */
+  --bg-gradient-2: #7a4cd6;/* hero gradient end */
 
   /* Text & accents */
-  --accent: #e9defa;          /* soft lilac text */
-  --accent-strong: #fff7fe;   /* brighter heading */
+  --accent: #e9defa;       /* soft lilac text */
+  --accent-strong: #fff7fe;/* brighter heading */
 
   /* Primary action color (buttons, highlights) */
-  --rose: #8b5cf6;            /* primary purple */
-  --rose-dark: #6d28d9;       /* hover/darker */
+  --rose: #8b5cf6;         /* primary purple */
+  --rose-dark: #6d28d9;    /* hover/darker */
 
   /* Muted text */
-  --muted: #c8b9e6;           /* body copy on dark bg */
+  --muted: #c8b9e6;        /* body copy on dark bg */
 
   /* Cards & borders */
   --card: rgba(255,255,255,0.06);
@@ -60,16 +58,9 @@
   --maxw: 1200px;
 }
 
-/* ---------------------------
-   GLOBAL RESET & BASE
-----------------------------*/
+/* --- GLOBAL RESET & BASE --- */
 *{ box-sizing:border-box; }
-html,body{
-  height:100%;
-  background: var(--bg-deep);
-  color: var(--accent);
-  margin:0;
-}
+html,body{ height:100%; background: var(--bg-deep); color: var(--accent); margin:0; }
 body{
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height:1.5;
@@ -77,50 +68,34 @@ body{
 img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
 
-/* ---------------------------
-   DECORATIVE PETALS (SVG or PNG)
-----------------------------*/
+/* --- DECORATIVE PETALS (SVG/PNG) --- */
 .petal{
-  position:absolute;
-  pointer-events:none;
-  opacity:0.18;
+  position:absolute; pointer-events:none; opacity:0.18;
   filter:saturate(110%) contrast(110%);
   /* Performance hint for JS parallax transforms */
   will-change: transform;
 }
-
-/* If you use <img> inside .petal (SVG/PNG), size here */
+/* If you use <img> inside .petal, size here */
 .petal img{
-  width: 240px;   /* tweak per instance if needed */
+  width: 240px; /* tweak per instance if needed */
   height: auto;
   transition: filter .25s ease, transform .25s ease;
 }
-
 /* Initial positions + rotations (JS parallax will preserve angles) */
 .petal.p1{ top:-40px; left:-40px; transform:rotate(-12deg); }
 .petal.p2{ top:30%; right:-60px; transform:rotate(24deg); }
 .petal.p3{ bottom:-60px; left:10%; transform:rotate(-8deg); }
-
 /* Optional micro interaction */
 .petal:hover img{ filter:saturate(120%) contrast(115%); transform:scale(1.03); }
-
 /* Respect reduced motion (JS also disables parallax) */
 @media (prefers-reduced-motion: reduce){
   .petal{ animation:none; }
 }
 
-/* ---------------------------
-   CONTAINER
-----------------------------*/
-.wrap{
-  max-width: var(--maxw);
-  margin:0 auto;
-  padding: 24px;
-}
+/* --- CONTAINER --- */
+.wrap{ max-width: var(--maxw); margin:0 auto; padding: 24px; }
 
-/* ---------------------------
-   HERO SECTION
-----------------------------*/
+/* --- HERO SECTION --- */
 .hero{
   position:relative;
   border-radius: var(--radius-lg);
@@ -134,20 +109,27 @@ a{ color:inherit; text-decoration:none; }
   gap: 24px;
   padding: 40px 40px 28px;
 }
-
 .hero-type .kicker{
   font-weight:800; letter-spacing:.08em; text-transform:uppercase;
-  color: var(--accent);
-  opacity:0.85; margin-bottom:6px; font-size: 12px;
+  color: var(--accent); opacity:0.85; margin-bottom:6px; font-size: 12px;
 }
+
+/* NOTE: if you keep Google Fonts as Play + Inter, switch this to Play: */
 .big-title{
+  /* Option 1: keep Playfair (import it in HTML) */
   font-family: "Playfair Display", serif;
   font-weight:900;
   font-size: clamp(48px, 8.5vw, 120px);
-  line-height:0.95;
-  letter-spacing:-.01em;
-  margin: 0 0 8px 0;
+  line-height:0.95; letter-spacing:-.01em; margin: 0 0 8px 0;
 }
+/* Option 2 (alternative): use Play instead
+.big-title{
+  font-family: "Play", sans-serif;
+  font-weight:900;
+  font-size: clamp(48px, 8.5vw, 120px);
+  line-height:0.95; letter-spacing:-.01em; margin: 0 0 8px 0;
+}
+*/
 
 .stack{
   display:flex; flex-direction:column; gap:8px; margin-top:10px;
@@ -155,14 +137,10 @@ a{ color:inherit; text-decoration:none; }
 }
 .stack .pill{
   width:max-content; padding:6px 12px; border-radius: 999px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid var(--card-border);
+  background: rgba(255,255,255,0.08); border: 1px solid var(--card-border);
   backdrop-filter: blur(6px);
 }
-
-.hero-cta{
-  margin-top: 18px; display:flex; gap:12px; flex-wrap:wrap;
-}
+.hero-cta{ margin-top: 18px; display:flex; gap:12px; flex-wrap:wrap; }
 .btn{
   padding:12px 16px; border-radius: 10px; font-weight:700;
   background: var(--rose); color: #fff; border:1px solid rgba(255,255,255,.15);
@@ -172,19 +150,15 @@ a{ color:inherit; text-decoration:none; }
 .btn:hover{ background: var(--rose-dark); transform: translateY(-1px); }
 
 .hero-media{
-  position:relative;
-  display:flex; align-items:flex-end; justify-content:center;
-  border-radius: var(--radius-md);
-  overflow:hidden; isolation:isolate;
+  position:relative; display:flex; align-items:flex-end; justify-content:center;
+  border-radius: var(--radius-md); overflow:hidden; isolation:isolate;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
   border: 1px solid var(--card-border);
 }
 .hero-media .frame{
-  width:100%;
-  aspect-ratio: 4 / 3;
-  background:
-    radial-gradient(120% 120% at 80% 10%, rgba(255,255,255,.08), transparent 40%),
-    linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.35));
+  width:100%; aspect-ratio: 4 / 3;
+  background: radial-gradient(120% 120% at 80% 10%, rgba(255,255,255,.08), transparent 40%),
+              linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.35));
   display:grid; place-items:center;
 }
 .hero-media .frame img{
@@ -192,142 +166,80 @@ a{ color:inherit; text-decoration:none; }
   filter: saturate(110%) contrast(105%);
 }
 
-/* ---------------------------
-   SECTIONS & CARD GRID
-----------------------------*/
+/* --- SECTIONS & CARD GRID --- */
 .section{ margin-top: 28px; }
 .section-title{
-  font-family: "Playfair Display", serif; font-weight:900;
-  font-size: clamp(28px, 3.8vw, 44px);
-  letter-spacing:-.01em; margin-bottom: 12px;
-  color: var(--accent-strong);
+  font-family: "Playfair Display", serif; /* or "Play" if you choose Option 2 */
+  font-weight:900; font-size: clamp(28px, 3.8vw, 44px);
+  letter-spacing:-.01em; margin-bottom: 12px; color: var(--accent-strong);
 }
-
-.grid{
-  display:grid; gap: 16px;
-  grid-template-columns: repeat(12, 1fr);
-}
-
+.grid{ display:grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
 .card{
-  grid-column: span 4;
-  background: var(--card);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  backdrop-filter: blur(8px);
-  box-shadow: var(--shadow-soft);
-  overflow:hidden;
+  grid-column: span 4; background: var(--card); border: 1px solid var(--card-border);
+  border-radius: var(--radius-md); backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-soft); overflow:hidden;
 }
 .card.wide{ grid-column: span 8; }
-
 .card-header{
-  padding: 16px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
-  border-bottom: 1px solid var(--card-border);
-  font-weight:800; letter-spacing:.03em;
+  padding: 16px; background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+  border-bottom: 1px solid var(--card-border); font-weight:800; letter-spacing:.03em;
 }
 .card-body{ padding: 16px; }
 .card p{ color: var(--muted); margin: 0 0 10px 0; }
-
-.shot{
-  width:100%; aspect-ratio: 16/9; border-radius: 10px; overflow:hidden;
-  border:1px solid var(--card-border); margin-top: 10px;
-}
+.shot{ width:100%; aspect-ratio: 16/9; border-radius: 10px; overflow:hidden; border:1px solid var(--card-border); margin-top: 10px; }
 .shot img{ width:100%; height:100%; object-fit:cover; }
 
 /* Bulleted list blocks (used in About cards) */
-.bullet{
-  display:flex; align-items:flex-start; gap:10px; margin-bottom:10px;
-}
+.bullet{ display:flex; align-items:flex-start; gap:10px; margin-bottom:10px; }
 .bullet .dot{
   width:14px; height:14px; border-radius:50%;
   background: linear-gradient(180deg, var(--rose), var(--rose-dark));
-  box-shadow: 0 4px 10px rgba(139,92,246,.35);
-  margin-top: 4px;
-  flex-shrink:0;
+  box-shadow: 0 4px 10px rgba(139,92,246,.35); margin-top: 4px; flex-shrink:0;
 }
 
-/* ---------------------------
-   CTA / CONTACT SECTION
-----------------------------*/
+/* --- CTA / CONTACT SECTION --- */
 .cta{
-  position:relative;
-  margin-top: 28px;
-  border-radius: var(--radius-lg);
-  background: radial-gradient(800px 420px at 20% 30%, rgba(255,255,255,0.06), transparent 60%), linear-gradient(180deg, var(--bg-gradient-2), var(--bg-dark));
-  border: 1px solid var(--card-border);
-  display:grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 16px;
-  padding: 24px;
-  overflow:hidden;
+  position:relative; margin-top: 28px; border-radius: var(--radius-lg);
+  background: radial-gradient(800px 420px at 20% 30%, rgba(255,255,255,0.06), transparent 60%),
+              linear-gradient(180deg, var(--bg-gradient-2), var(--bg-dark));
+  border: 1px solid var(--card-border); display:grid; grid-template-columns: 1.2fr 0.8fr;
+  gap: 16px; padding: 24px; overflow:hidden;
 }
 .cta-left h2{
-  font-family: "Playfair Display", serif; font-weight:900;
-  font-size: clamp(30px, 4.5vw, 54px);
-  margin: 0 0 12px 0;
+  font-family: "Playfair Display", serif; /* or "Play" */
+  font-weight:900; font-size: clamp(30px, 4.5vw, 54px); margin: 0 0 12px 0;
 }
 .cta-left .bubble{
-  background: var(--card);
-  border:1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  padding: 14px;
-  color: var(--accent);
-  max-width: 600px;
+  background: var(--card); border:1px solid var(--card-border);
+  border-radius: var(--radius-md); padding: 14px; color: var(--accent); max-width: 600px;
 }
-.qr-line{
-  display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;
-}
+.qr-line{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
 .qr{
-  width: 136px; height: 136px;
-  border-radius: 12px; overflow:hidden;
-  border:1px solid var(--card-border);
-  background: #fff;
-  display:grid; place-items:center;
+  width: 136px; height: 136px; border-radius: 12px; overflow:hidden;
+  border:1px solid var(--card-border); background: #fff; display:grid; place-items:center;
 }
 .qr img{ width:100%; height:100%; object-fit:cover; }
 
-/* ---------------------------
-   ROUND PORTRAIT FRAME
-----------------------------*/
-.cta-right{
-  display:flex; align-items:center; justify-content:center;
-}
+/* --- ROUND PORTRAIT FRAME --- */
+.cta-right{ display:flex; align-items:center; justify-content:center; }
 .round-frame{
-  width: min(380px, 80%);
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  border: 1px solid var(--card-border);
-  overflow:hidden;
-  box-shadow: var(--shadow-soft);
-  background: radial-gradient(160% 160% at 50% 20%, rgba(255,255,255,.08), transparent 55%), linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.35));
+  width: min(380px, 80%); aspect-ratio: 1 / 1; border-radius: 50%;
+  border: 1px solid var(--card-border); overflow:hidden; box-shadow: var(--shadow-soft);
+  background: radial-gradient(160% 160% at 50% 20%, rgba(255,255,255,.08), transparent 55%),
+              linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.35));
 }
 .round-frame img{
   width:100%; height:100%; object-fit: cover;
   filter: saturate(110%) contrast(105%);
 }
 
-/* ---------------------------
-   FOOTER
-----------------------------*/
-.footer{
-  opacity:0.75;
-  font-size: 12px;
-  padding: 20px 8px;
-  text-align:center;
-  color: var(--muted);
-}
+/* --- FOOTER --- */
+.footer{ opacity:0.75; font-size: 12px; padding: 20px 8px; text-align:center; color: var(--muted); }
 
-/* ---------------------------
-   HOVER MICRO-INTERACTIONS
-----------------------------*/
-.card:hover{
-  transform: translateY(-2px);
-  transition: transform .2s ease;
-}
+/* --- HOVER MICRO-INTERACTIONS --- */
+.card:hover{ transform: translateY(-2px); transition: transform .2s ease; }
 
-/* ---------------------------
-   RESPONSIVE
-----------------------------*/
+/* --- RESPONSIVE --- */
 @media (max-width: 980px){
   .hero-inner{ grid-template-columns: 1fr; }
   .cta{ grid-template-columns: 1fr; }
@@ -335,125 +247,72 @@ a{ color:inherit; text-decoration:none; }
   .grid .card.wide{ grid-column: span 12; }
 }
 
-
-/* ---------------------------
-   WORKS SLIDER (glassmorphism)
-----------------------------*/
+/* --- WORKS SLIDER (glassmorphism) --- */
 .works-slider{
   position: relative;
   /* Match your card style / purple glass effect */
-  background: var(--card);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  backdrop-filter: blur(8px);
-  box-shadow: var(--shadow-soft);
-  padding: 12px;
-  overflow: hidden;
+  background: var(--card); border: 1px solid var(--card-border);
+  border-radius: var(--radius-md); backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-soft); padding: 12px; overflow: hidden;
 }
-
 .works-slider__viewport{
-  width: 100%;
-  /* 16:9 slides */
+  width: 100%; /* 16:9 slides */
   aspect-ratio: 16 / 9;
-  border-radius: 10px;
-  overflow: hidden;
+  border-radius: 10px; overflow: hidden;
   border: 1px solid var(--card-border);
   background: rgba(255,255,255,0.04);
 }
-
 .works-slider__track{
-  display: flex;
-  width: 100%;
-  height: 100%;
+  display: flex; width: 100%; height: 100%;
   /* animated movement */
   transition: transform .35s ease;
   will-change: transform;
 }
-
-.works-slide{
-  flex: 0 0 100%;
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
+.works-slide{ flex: 0 0 100%; position: relative; width: 100%; height: 100%; }
 .works-slide img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(110%) contrast(105%);
-  display: block;
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(110%) contrast(105%); display: block;
 }
-
 .works-slide figcaption{
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  padding: 6px 10px;
-  font-size: .85rem;
-  color: var(--accent);
-  background: rgba(0,0,0,.25);
-  border: 1px solid rgba(255,255,255,.15);
+  position: absolute; left: 10px; bottom: 10px; padding: 6px 10px;
+  font-size: .85rem; color: var(--accent);
+  background: rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.15);
   border-radius: 8px;
 }
 
 /* Controls */
 .works-slider__controls{
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  pointer-events: none;          /* allow only buttons to be clickable */
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between;
+  pointer-events: none; /* allow only buttons to be clickable */
   padding: 0 6px;
 }
-
 .slider-btn{
-  pointer-events: auto;
-  width: 40px; height: 40px;
-  border-radius: 50%;
+  pointer-events: auto; width: 40px; height: 40px; border-radius: 50%;
   border: 1px solid var(--card-border);
   background: radial-gradient(200% 200% at 50% 50%, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
-  color: var(--accent-strong);
-  font-size: 22px;
-  font-weight: 900;
-  line-height: 40px;
-  text-align: center;
+  color: var(--accent-strong); font-size: 22px; font-weight: 900; line-height: 40px; text-align: center;
   box-shadow: 0 6px 18px rgba(0,0,0,.30);
   transition: transform .15s ease, background-color .15s ease;
 }
-
 .slider-btn:hover{ transform: scale(1.06); }
-.slider-btn:focus{
-  outline: 2px solid var(--rose);
-  outline-offset: 2px;
-}
+.slider-btn:focus{ outline: 2px solid var(--rose); outline-offset: 2px; }
 .slider-btn.prev{ margin-left: 4px; }
 .slider-btn.next{ margin-right: 4px; }
 
 /* Dots */
 .works-slider__dots{
-  display: flex; gap: 6px;
-  margin-top: 10px;
-  justify-content: center;
+  display: flex; gap: 6px; margin-top: 10px; justify-content: center;
 }
-
 .works-slider__dots button{
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  border: 1px solid var(--card-border);
-  background: rgba(255,255,255,0.18);
+  width: 8px; height: 8px; border-radius: 50%;
+  border: 1px solid var(--card-border); background: rgba(255,255,255,0.18);
   box-shadow: 0 2px 6px rgba(0,0,0,.25);
   transition: transform .15s ease, background-color .15s ease;
 }
 .works-slider__dots button[aria-selected="true"]{
-  background: var(--rose);
-  transform: scale(1.25);
+  background: var(--rose); transform: scale(1.25);
 }
-.works-slider__dots button:focus{
-  outline: 2px solid var(--rose);
-  outline-offset: 2px;
-}
+.works-slider__dots button:focus{ outline: 2px solid var(--rose); outline-offset: 2px; }
 
 /* Responsive tweaks */
 @media (max-width: 980px){

@@ -11,20 +11,21 @@
     <link rel="stylesheet" href="css/images.css">
     <link rel="stylesheet" href="css/slideshow.css">
 
-
-  <link href="https://fonts.googleapis.com/css2?family=Play:wght@700;900&family=Inter:wght@400;600;800;900&display=swap
+  <!-- Google Fonts (fixed) -->
+   <link href="https://fonts.googleapis.com/css2?family=Play:wght@700;900&family=Inter:wght@400;600;800;900&display=swap
 </head>
 <body>
-<nav class="navbar">
-    <a href="#about">About me</a> 
-    <a href="#experiences">Experience</a>
-    <a href="#gallery">Gallery</a>
-</nav>
-  
-<div class="petal p1" aria-hidden="true">svg/petal-1.png</div>
-<div class="petal p2" aria-hidden="true">svg/petal-2.png</div>
-<div class="petal p3" aria-hidden="true">svg/petal-3.png</div>
+  <nav class="navbar">
+    <!-- IDs updated to match sections -->
+    #aboutAbout me</a>
+    #processExperience</a>
+    #worksGallery</a>
+  </nav>
 
+  <!-- Petal decorations (text kept; likely CSS background images applied) -->
+  <div class="petal p1" aria-hidden="true">svg/petal-1.png</div>
+  <div class="petal p2" aria-hidden="true">svg/petal-2.png</div>
+  <div class="petal p3" aria-hidden="true">svg/petal-3.png</div>
 
   <div class="wrap">
 
@@ -36,7 +37,8 @@
           <h1 class="big-title">Breneth<br/>Ananayo</h1>
 
           <div class="hero-cta">
-            #educational</a>
+
+            #about#educational</a>
           </div>
         </div>
 
@@ -82,7 +84,7 @@
       </div>
     </section>
 
-    <!--experience -->
+    <!-- experience -->
     <section class="section" id="process">
       <h2 class="section-title">IT Experience</h2>
       <div class="grid">
@@ -93,80 +95,83 @@
         <article class="card"><div class="card-header">5. Java</div><div class="card-body"><p>I can do the basics</p></div></article>
         <article class="card"><div class="card-header">6. Linux</div><div class="card-body"><p>I can do some Linux Commands</p></div></article>
       </div>
-<ul></ul>
-    <div id="app2">
-        <div class="experience-icons">
-            <img v-for="x in manyExperience" :key="x" :src="x" alt="Skill Icon">
-        </div>
-    </div>
 
+      <ul></ul>
+
+      <div id="app2">
+        <div class="experience-icons">
+          <img v-for="x in manyExperience" :key="x" :src="x" alt="Skill Icon">
+        </div>
+      </div>
     </section>
+
+    <!-- Vue and images list -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="js/images.js"></script>
 
+    <!-- Gallery -->
+    <section class="section" id="works">
+      <h2 class="section-title">Gallery</h2>
+      <div class="grid">
 
-<section class="section" id="works">
-  <h2 class="section-title">Gallery</h2>
-  <div class="grid">
-  
-    <article class="card wide" role="region" aria-label="Слайд-шоу работ">
-      <div class="card-header">Random Picture</div>
-      <div class="card-body">
-        <div class="works-slider" id="works-slider">
+        <article class="card wide" role="region" aria-label="Слайд-шоу работ">
+          <div class="card-header">Random Picture</div>
+          <div class="card-body">
+            <div class="works-slider" id="works-slider">
 
-          <div class="works-slider__viewport" aria-live="polite">
-            <div class="works-slider__track">
+              <div class="works-slider__viewport" aria-live="polite">
+                <div class="works-slider__track">
 
-<figure class="works-slide">
-  <img src="assets/cat.jpg" alt="cat">
-</figure>
+                  <figure class="works-slide">
+                    <img src="assets/cat.jpg" alt="cat">
+                  </figure>
 
-<figure class="works-slide">
-  <img src="assets/flowers.jpg" alt="flower">
-</figure>
+                  <figure class="works-slide">
+                   <img src="assets/flowers.jpg" alt="flower">
+                   </figure>
+                  <figure class="works-slide">
+                    <img src="assets/orchid.jpg" alt="flower">
+                  </figure>
 
-<figure class="works-slide">
-  <img src="assets/orchid.jpg" alt="flower">
-</figure>
+                  <figure class="works-slide">
+                    <img src="assets/sunset.jpg" alt="sunset">
+                  </figure>
 
-<figure class="works-slide">
-  <img src="assets/sunset.jpg" alt="Sunset">
-</figure>
+                  <figure class="works-slide">
+                    <img src="assets/me3.jpg" alt="Random">
 
-<figure class="works-slide">
-  <img src="assets/me3.jpg" alt="Random">
-</figure>
+                </div>
+              </div>
 
+              <!-- Controls -->
+              <div class="works-slider__controls">
+                <button class="slider-btn prev" type="button" aria-label="Предыдущий слайд" aria-controls="works-slider">&#10094;</button>
+                <button class="slider-btn next" type="button" aria-label="Следующий слайд" aria-controls="works-slider">&#10095;</button>
+              </div>
+
+              <div class="works-slider__dots" role="tablist" aria-label="Навигация по слайдам">
+              </div>
             </div>
           </div>
+        </article>
 
-          <!-- Controls -->
-          <div class="works-slider__controls">
-            <button class="slider-btn prev" type="button" aria-label="Предыдущий слайд" aria-controls="works-slider">&#10094;</button>
-            <button class="slider-btn next" type="button" aria-label="Следующий слайд" aria-controls="works-slider">&#10095;</button>
-          </div>
+        <footer class="footer">
+          <p>Contact: <a href="mailto:bpananayo@student.apc.edu.ph" style="color: #e9defa</p>
+          <p>© 2026 Breneth Jian Ananayo</p>
 
-          <div class="works-slider__dots" role="tablist" aria-label="Навигация по слайдам">
+          <hr style="width: 50px; margin: 10px auto; border-color: #555;">
+
+          <div style="font-size: 0.8rem; opacity: 0.8; margin-top: 10px;">
+            <p><strong>Resources:</strong> Images via Online, and personal files.</p>
+            <p><strong>AI Disclosure:</strong> Some code structure and debugging assisted by Gemini AI.</p>
           </div>
-        </div>
+        </footer>
       </div>
-    </article>
+    </section>
 
-
-    <footer class="footer">
-        <p>Contact: <a href="mailto:bpananayo@student.apc.edu.ph" style="color: #e9defa;">bpananayo@student.apc.edu.ph</a></p>
-    <p>© 2026 Breneth Jian Ananayo</p>
-    
-    <hr style="width: 50px; margin: 10px auto; border-color: #555;">
-    
-    <div style="font-size: 0.8rem; opacity: 0.8; margin-top: 10px;">
-        <p><strong>Resources:</strong> Images via Online, and personal files.</p>
-        <p><strong>AI Disclosure:</strong> Some code structure and debugging assisted by Gemini AI.</p>
-    </div>
-    </footer>
-  </div>
-
-  <!-- Scripts -->
+    <!-- Scripts -->
 <script src="js/main.js"></script>
+  </div>
 </body>
 </html>
+``
