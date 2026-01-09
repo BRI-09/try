@@ -1,29 +1,3 @@
-/* --- NAVBAR (fixed structure) --- */
-.navbar {
-  display: flex;
-  justify-content: center;
-  background-color: #333;
-  flex-wrap: wrap; /* helps on small screens */
-}
-
-.navbar a,
-.navbar button {
-  color: white;
-  padding: 14px 20px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font: inherit;
-}
-
-.navbar a:hover,
-.navbar button:hover {
-  background-color: #7a559f;
-}
-
-
 /* --- THEME VARIABLES --- */
 :root{
   /* Background & surfaces */
