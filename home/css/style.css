@@ -109,10 +109,14 @@ a{ color:inherit; text-decoration:none; }
   padding: 40px 40px 28px;
 }
 
-.hero-type .kicker{
-  font-weight:800; letter-spacing:.08em; text-transform:uppercase;
-  color: var(--accent);
-  opacity:0.85; margin-bottom:6px; font-size: 12px;
+.hero-type .kicker {
+  font-weight: 800; 
+  letter-spacing: .08em; 
+  text-transform: uppercase;
+  color: var(--accent); /* This uses #e9defa (soft lilac) */
+  opacity: 0.85; 
+  margin-bottom: 6px; 
+  font-size: 12px;
 }
 .big-title{
   font-family: "Playfair Display", serif;
